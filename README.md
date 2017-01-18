@@ -21,15 +21,25 @@ Run
 
 ## Endpoints
 
+Root path http://localhost:8980/v1  
+
 POST /checklists  
+Create a checklist. Payload example `{"name": "List 1", "userId": 1}`  
 GET /checklists  
-GET /checklists/{id}  
-PUT /checklists/{id}  
+Get all checklists. Optional filter with query string param `userId=1`  
+GET /checklists/{ID}  
+Get a checklist by ID.  
+PUT /checklists/{ID}  
+Update a checklist. Payload example `{"name": "List 1", "userId": 1}`
 
 POST /tasks  
+Create a task. Payload example `{"description": "Task 1", "checlistId": 1}` optional parameters `"dueDate": "2017-01-30"` and  `"complete": true`  
 GET /tasks  
-GET /tasks/{id}  
-PUT /tasks/{id}  
+Get all tasks. Optional filter with query string param `checklistId=1`  
+GET /tasks/{ID}  
+Get a task by ID.  
+PUT /tasks/{ID}  
+Update a task. Payload example `{"description": "Task 1", "checlistId": 1}` optional parameters `"dueDate": "2017-01-30"` and  `"complete": true`  
 
 ## Notes
 
