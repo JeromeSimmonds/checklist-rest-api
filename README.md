@@ -8,13 +8,28 @@ MySQL 5.6.5+
 
 ## Setup
 
-Copy etc/checklist-api.properties.sample to checklist-api.properties and modify the properties in checklist-api.properties accordingly. 
+Copy `etc/checklist-api.properties.sample` to `etc/checklist-api.properties` and modify the properties in `checklist-api.properties` accordingly. 
 
-Run the following command (with the same configuration from checklist-api.properties)
+Run the following command (with the same configuration from checklist-api.properties)  
 `mvn liquibase:update -Dchecklist.database.host=localhost -Dchecklist.database.schema=checklist -Dchecklist.database.username=xxx -Dchecklist.database.password=xxx`
 
 Create at least 1 user in the users table:  
-INSERT INTO users(id, username) VALUES(1, 'user1');
+`INSERT INTO users(id, username) VALUES(1, 'user1');`
+
+Run  
+`mvn jetty:run`
+
+## Endpoints
+
+POST /checklists  
+GET /checklists  
+GET /checklists/{id}  
+PUT /checklists/{id}  
+
+POST /tasks  
+GET /tasks  
+GET /tasks/{id}  
+PUT /tasks/{id}  
 
 ## Notes
 
