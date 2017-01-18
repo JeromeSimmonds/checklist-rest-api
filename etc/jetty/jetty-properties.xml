@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure id="wac" class="org.eclipse.jetty.webapp.WebAppContext">
+	<New id="configProperties" class="org.eclipse.jetty.plus.jndi.EnvEntry">
+		<Arg>config/checklistProperties</Arg>
+		<Arg type="java.lang.String">file:etc/checklist-api.properties</Arg>
+	</New>
+</Configure>
