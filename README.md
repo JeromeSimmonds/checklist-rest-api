@@ -41,6 +41,12 @@ Get a task by ID.
 * PUT /tasks/{ID}  
 Update a task. Payload example `{"description": "Task 1", "checklistId": 1}` optional parameters `"dueDate": "2017-01-30"` and  `"complete": true`  
 
+## Tests
+
+For integration tests you need a test database: copy `src/test/resources/persistence.properties.sample` to `src/test/resources/persistence.properties` and modify the properties in `persistence.properties` accordingly (use a different schema than the one created above).  
+Run the following command (with the same configuration from persistence.properties)  
+`mvn liquibase:update -Dchecklist.database.host=localhost -Dchecklist.database.schema=checklist_test -Dchecklist.database.username=xxx -Dchecklist.database.password=xxx`
+
 ## Notes
 
 This kind of project definitely requires much more than "two to four hours" to code properly a RESTful API, a persistence layer, the unit/integration tests and provide a documentation. I spent much more than 4 hours on it but I would need more time to implement certain features, more validation, more tests. You'll see in the code some TODOs comments about some of the things I would do next.
