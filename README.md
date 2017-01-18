@@ -28,12 +28,12 @@ Create a checklist. Payload example `{"name": "List 1", "userId": 1}`
 * GET /checklists  
 Get all checklists. Optional filter with query string param `userId=1`  
 * GET /checklists/{ID}  
-Get a checklist by ID.  
+Get a checklist by ID.
 * PUT /checklists/{ID}  
 Update a checklist. Payload example `{"name": "List 1", "userId": 1}`
 
 * POST /tasks  
-Create a task. Payload example `{"description": "Task 1", "checklistId": 1}` optional parameters `"dueDate": "2017-01-30"`  
+Create a task. Payload example `{"description": "Task 1", "checklistId": 1}` optional parameters `"dueDate": "2017-01-30"`
 * GET /tasks  
 Get all tasks. Optional filter with query string param `checklistId=1`  
 * GET /tasks/{ID}  
