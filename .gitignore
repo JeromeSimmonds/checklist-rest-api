@@ -20,4 +20,5 @@ target/
 logs/
 
 etc/checklist-api.properties
+src/test/resources/persistence.properties
 src/main/metamodel/
