@@ -31,8 +31,6 @@ import com.learnvest.checklistapi.service.FindSort;
  */
 public abstract class AbstractSpecification<T> implements Specification<T>, PageableSpecification {
 
-	private static final String PERCENT_SIGN = "%";
-
 	private FindParameters parameters;
 	
 	public AbstractSpecification(FindParameters parameters) {
@@ -73,51 +71,14 @@ public abstract class AbstractSpecification<T> implements Specification<T>, Page
 				return builder.equal(getField(root, Object.class, filter.getType()), filter.getValue());
 			case NOT_EQUALS:
 				return builder.notEqual(getField(root, Object.class, filter.getType()), filter.getValue());
-			case GREATER_OR_EQUALS:
-				if (filter.getValue() instanceof Date) {
-					return builder.greaterThanOrEqualTo(getField(root, Date.class, filter.getType()), (Date) filter.getValue());
-				} else {
-					return builder.ge(getField(root, Number.class, filter.getType()), (Number) filter.getValue());
-				}
-			case GREATER_THAN:
-				if (filter.getValue() instanceof Date) {
-					return builder.greaterThan(getField(root, Date.class, filter.getType()), (Date) filter.getValue());
-				} else {
-					return builder.gt(getField(root, Number.class, filter.getType()), (Number) filter.getValue());
-				}			
 			case IN:
 				if (filter.getValue() != null && filter.getValue() instanceof Collection && !((Collection<?>) filter.getValue()).isEmpty())
 					return getField(root, Collection.class, filter.getType()).in((Collection<?>) filter.getValue());
 				else
 					throw new FilterException(filter, FilterProperty.Mode, "Filter value is required");
-			case NOT_IN:
-				return builder.not(getField(root, Collection.class, filter.getType()).in(filter.getValue()));
-			case IS_NOT_NULL:
-				return builder.isNotNull(getField(root, Object.class, filter.getType()));
-			case IS_NULL:
-				return builder.isNull(getField(root, Object.class, filter.getType()));
-			case LESS_OR_EQUALS:
-				if (filter.getValue() instanceof Date) {
-					return builder.lessThanOrEqualTo(getField(root, Date.class, filter.getType()), (Date) filter.getValue());
-				} else {
-					return builder.le(getField(root, Number.class, filter.getType()), (Number) filter.getValue());
-				}
-			case LESS_THAN:
-				if (filter.getValue() instanceof Date) {
-					return builder.lessThan(getField(root, Date.class, filter.getType()), (Date) filter.getValue());
-				} else {
-					return builder.lt(getField(root, Number.class, filter.getType()), (Number) filter.getValue());
-				}
-			case LIKE:
-				return builder.like(getField(root, String.class, filter.getType()), PERCENT_SIGN + filter.getValue() + PERCENT_SIGN);
-			case NOT_LIKE:
-				return builder.notLike(getField(root, String.class, filter.getType()), (String) filter.getValue());
-			case STARTS_WITH:
-				return builder.like(getField(root, String.class, filter.getType()), filter.getValue() + PERCENT_SIGN);
-			case ENDS_WITH:
-				return builder.like(getField(root, String.class, filter.getType()), PERCENT_SIGN + filter.getValue());
 			default:
 				throw new FilterException(filter, FilterProperty.Mode);
+			//TODO if not a coding challenge, implement all operators
 		}
 	}
 	

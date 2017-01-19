@@ -16,7 +16,5 @@ public enum FindFilterOperator {
 	LESS_THAN,
 	LESS_OR_EQUALS,
 	LIKE,
-	NOT_LIKE,
-	STARTS_WITH,
-	ENDS_WITH
+	NOT_LIKE
 }

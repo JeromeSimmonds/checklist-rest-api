@@ -4,6 +4,7 @@ import static com.learnvest.checklistapi.ChecklistApiConstants.CHECKLIST_ID;
 import static com.learnvest.checklistapi.ChecklistApiConstants.ID;
 import static com.learnvest.checklistapi.ChecklistApiConstants.PAGE;
 import static com.learnvest.checklistapi.ChecklistApiConstants.PATH_PARAM_ID;
+import static com.learnvest.checklistapi.ChecklistApiConstants.SORT;
 
 import java.net.URI;
 import java.time.LocalDate;
@@ -62,14 +63,21 @@ public class TasksResource extends AbstractIdentifiableResource<Task, Integer, B
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTasks(
 			@QueryParam(PAGE) @DefaultValue("1") int page,
+			@QueryParam(SORT) @DefaultValue("dueDate") String sort,
 			@QueryParam(CHECKLIST_ID) @DefaultValue("0") int checkListId) {
+		
+		//TODO if not a coding challenge, also allow path /checklists/{ID}/tasks in addition to /tasks?checklistId={ID}
 		
 		//TODO if not a coding challenge, implement filters and sorts
 		
-		FindParameters parameters = new FindParameters(page, DEFAULT_PAGE_SIZE)
-			.with(FindSort.DUE_DATE);
+		FindParameters parameters = new FindParameters(page, DEFAULT_PAGE_SIZE);
 		if (checkListId > 0)
 			parameters.with(FindFilterType.CHECKLIST, checkListId);
+		if (sort.equals("created")) //TODO if not a coding challenge, code enum with available sorts and implement more sorts and order (asc/desc)
+			parameters.with(FindSort.MOST_RECENT);
+		else
+			parameters.with(FindSort.DUE_DATE);
+		
 		Findings<Task> findings = service.find(parameters);
 		
 		List<TaskDTO> dtos = findings.getResults().stream()

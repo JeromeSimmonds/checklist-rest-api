@@ -35,7 +35,7 @@ Update a checklist. Payload example `{"name": "List 1", "userId": 1}`
 * POST /tasks  
 Create a task. Payload example `{"description": "Task 1", "checklistId": 1}` optional parameters `"dueDate": "2017-01-30"`
 * GET /tasks  
-Get all tasks. Optional filter with query string param `checklistId=1`  
+Get all tasks. Optional filter with query string param `checklistId=1`. Optional sort with query string param `sort=dueDate` (default) or `sort=created` (least recent first).  
 * GET /tasks/{ID}  
 Get a task by ID.  
 * PUT /tasks/{ID}  

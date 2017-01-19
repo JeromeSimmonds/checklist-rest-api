@@ -33,6 +33,7 @@ public class ChecklistApiConstants {
 	public static final String METADATA = "metadata";
 	public static final String PAGE = "page";
 	public static final String PAGE_SIZE = "pageSize";
+	public static final String SORT = "sort";
 	public static final String PATH = "path";
 	public static final String ID = "id";
 	public static final String USER_ID = "userId";
