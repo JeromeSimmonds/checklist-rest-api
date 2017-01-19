@@ -43,10 +43,10 @@ Update a task. Payload example `{"description": "Task 1", "checklistId": 1}` opt
 
 ## Tests
 
-For integration tests you need a test database: copy `src/test/resources/persistence.properties.sample` to `src/test/resources/persistence.properties` and modify the properties in `persistence.properties` accordingly (use a different schema than the one created above).  
+For integration tests you need a test database: copy `src/test/resources/persistence.properties.sample` to `src/test/resources/persistence.properties` and modify the properties in `persistence.properties` accordingly (use a different schema than the one created above in setup).  
 Run the following command (with the same configuration from persistence.properties)  
 `mvn liquibase:update -Dchecklist.database.host=localhost -Dchecklist.database.schema=checklist_test -Dchecklist.database.username=xxx -Dchecklist.database.password=xxx`
 
 ## Notes
 
-This kind of project definitely requires much more than "two to four hours" to code properly a RESTful API, a persistence layer, the unit/integration tests and provide a documentation. I spent much more than 4 hours on it but I would need more time to implement certain features, more validation, more tests. You'll see in the code some TODOs comments about some of the things I would do next.
+For a project that encompasses a RESTful API with a persistence layer, including the unit/integration tests and documentation, it definitely requires much more than "two to four hours" to code properly. I spent more than 4 hours on it but I would need more time to implement certain features, like more validations and more tests. Some of the things I would do next are seen in the code under the TODOs comments.
